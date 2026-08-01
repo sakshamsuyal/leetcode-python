@@ -7,16 +7,13 @@ class Solution(object):
         """
         r = 0
         l = 0
-        ans = []
         while r<len(s) and l<len(t):
             if s[r]==t[l]:
-                ans.append(t[l])
                 r+=1
                 l+=1
             else:
                 l+=1
-        ans = "".join(ans)
-        if ans == s:
-            return True 
+        if r == len(s):
+            return True
         else:
             return False
