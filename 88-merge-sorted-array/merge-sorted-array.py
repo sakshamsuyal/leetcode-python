@@ -7,14 +7,33 @@ class Solution(object):
         :type n: int
         :rtype: None Do not return anything, modify nums1 in-place instead.
         """
+        right = m - 1
+        left = n - 1
+        idk = m + n - 1
 
-        final = nums1[:m]+nums2[:n]
-        for i in range(1,len(final)):
-            current = final[i]
-            j = i-1
-            while j>=0 and final[j] >current:
-                final[j+1] = final[j]
-                j = j-1
-            final[j+1] = current
-        nums1[:] = final
-       
+        answer = [0] * (m + n)
+
+        while left >= 0 and right >= 0:
+            if nums1[right] > nums2[left]:
+                answer[idk] = nums1[right]
+                right -= 1
+            elif nums2[left] > nums1[right]:
+                answer[idk] = nums2[left]
+                left -= 1
+            else:
+                answer[idk] = nums1[right]
+                right -= 1
+            idk -= 1
+
+        while right >= 0:
+            answer[idk] = nums1[right]
+            right -= 1
+            idk -= 1
+
+        while left >= 0:
+            answer[idk] = nums2[left]
+            left -= 1
+            idk -= 1
+
+        for i in range(m + n):
+            nums1[i] = answer[i]
