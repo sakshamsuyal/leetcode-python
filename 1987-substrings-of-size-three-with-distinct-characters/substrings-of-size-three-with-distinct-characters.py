@@ -1,0 +1,19 @@
+class Solution(object):
+    def countGoodSubstrings(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        l = 0 
+        window = dict()
+        count = 0
+        for r in range(len(s)):
+            window[s[r]] = window.get(s[r], 0) + 1
+            if r-l+1 > 3:
+              window[s[l]] -=1
+              if window[s[l]] == 0:
+                 del window[s[l]]
+              l+=1
+            if len(window) == 3 and r-l+1 == 3:
+                count+=1
+        return count
