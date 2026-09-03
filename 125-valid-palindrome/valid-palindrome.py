@@ -6,16 +6,18 @@ class Solution(object):
         """
         left = 0
         right = len(s)-1
-        s=s.lower()
+        lower =  s.lower()
         while left<right:
-           
-            if s[left].isalnum()!= True:
-                left +=1
-            elif s[right].isalnum()!= True:
-                right -=1
-            elif s[left] == s[right]:
-                left+=1 
+            if not lower[left].isalnum():
+                left+=1
+                continue
+            if not lower[right].isalnum():
                 right-=1
-            else:
+                continue
+            if lower[left] != lower[right]:
                 return False
+            left+=1
+            right-=1
+            
         return True
+            
