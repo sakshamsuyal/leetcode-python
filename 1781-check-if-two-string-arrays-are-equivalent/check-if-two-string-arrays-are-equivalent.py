@@ -11,9 +11,7 @@ class Solution(object):
                 a = a+word1[i] 
         for x in range(len(word2)):
                 b = b+word2[x] 
-        if a == b:
-            return True
-        return False
+        return a==b
 
 
         
